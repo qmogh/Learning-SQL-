@@ -38,8 +38,11 @@ WHERE release_year = 1984 AND band_id = 1;
 SELECT * FROM albums
 WHERE release_year BETWEEN 2000 and 2018;
 
-DELETE FROM albums
-WHERE release_year IS NULL;
+SELECT * FROM bands
+LEFT JOIN albums ON bands.id = albums.band_id;
+
+
+
 
 
 
