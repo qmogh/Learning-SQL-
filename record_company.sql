@@ -1,0 +1,45 @@
+CREATE DATABASE record_company;
+USE record_company;
+CREATE TABLE bands (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,   
+    PRIMARY KEY (id)
+    );
+
+CREATE TABLE albums (
+	id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    release_year INT, 
+    band_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY(band_id) REFERENCES bands(id)
+);
+
+INSERT INTO bands (name)
+VALUES ('Iron Maiden'); 
+INSERT into bands (name)
+VALUES ('Deuce'), ('Avenge Sevenfold'), ('Ankor'); 
+
+SELECT * FROM BANDS ORDER BY name;
+
+INSERT INTO albums (name, release_year, band_id)
+VALUES ('The Number of the Beast', 1985, 1), 
+	   ('Power Slave', 1984, 1),
+       ('Nightmare', 2018, 2),
+       ('Nightmare', 2010, 3),
+       ('Test Album', NULL, 3);
+
+SELECT * FROM albums
+WHERE name LIKE '%er%' OR band_id = 2;
+
+SELECT * from albums
+WHERE release_year = 1984 AND band_id = 1;
+
+SELECT * FROM albums
+WHERE release_year BETWEEN 2000 and 2018;
+
+DELETE FROM albums
+WHERE release_year IS NULL;
+
+
+
